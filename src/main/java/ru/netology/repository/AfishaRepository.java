@@ -1,4 +1,4 @@
-package ru.netology.domain;
+package ru.netology.repository;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Movie {
+public class AfishaRepository {
     private int id;
     private String name;
     private String genre;
