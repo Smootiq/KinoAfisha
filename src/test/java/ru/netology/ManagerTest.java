@@ -2,35 +2,35 @@ package ru.netology;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.AfishaRepository;
-import ru.netology.manager.AfishaManager;
+import ru.netology.domain.Movie;
+import ru.netology.manager.Manager;
 
 public class ManagerTest {
-    AfishaManager manager = new AfishaManager(3);
-    AfishaRepository afishaRepository1 = new AfishaRepository(1, "Bloodshort", "Action");
-    AfishaRepository afishaRepository2 = new AfishaRepository(2, "Forward", "Cartoon");
-    AfishaRepository afishaRepository3 = new AfishaRepository(3, "Belgrad Hotel", "Comedy");
-    AfishaRepository afishaRepository4 = new AfishaRepository(4, "Gentlemens", "Action");
-    AfishaRepository afishaRepository5 = new AfishaRepository(5, "Invisible Man", "Thriller");
-    AfishaRepository afishaRepository6 = new AfishaRepository(6, "Trolls world tour", "Cartoon");
-    AfishaRepository afishaRepository7 = new AfishaRepository(7, "Number One", "Comedy");
+    Manager manager = new Manager(3);
+    Movie movie1 = new Movie(1, "Bloodshort", "Action");
+    Movie movie2 = new Movie(2, "Forward", "Cartoon");
+    Movie movie3 = new Movie(3, "Belgrad Hotel", "Comedy");
+    Movie movie4 = new Movie(4, "Gentlemens", "Action");
+    Movie movie5 = new Movie(5, "Invisible Man", "Thriller");
+    Movie movie6 = new Movie(6, "Trolls world tour", "Cartoon");
+    Movie movie7 = new Movie(7, "Number One", "Comedy");
 
     @Test
     void shouldAdd() {
-        AfishaRepository[] expected = new AfishaRepository[]{afishaRepository1};
-        manager.add( afishaRepository1 );
+        Movie[] expected = new Movie[]{movie1};
+        manager.add(movie1);
         Assertions.assertArrayEquals(expected, manager.getMovie());
     }
     @Test
     void shouldReturnLessThenMax () {
-        AfishaRepository[] expected = new AfishaRepository[] {afishaRepository7, afishaRepository6, afishaRepository5};
-        manager.add ( afishaRepository1 );
-        manager.add ( afishaRepository2 );
-        manager.add ( afishaRepository3 );
-        manager.add ( afishaRepository4 );
-        manager.add ( afishaRepository5 );
-        manager.add ( afishaRepository6 );
-        manager.add ( afishaRepository7 );
+        Movie[] expected = new Movie[] {movie7, movie6, movie5};
+        manager.add (movie1);
+        manager.add (movie2);
+        manager.add (movie3);
+        manager.add (movie4);
+        manager.add (movie5);
+        manager.add (movie6);
+        manager.add (movie7);
         Assertions.assertArrayEquals(expected, manager.getMovie());
     }
 
