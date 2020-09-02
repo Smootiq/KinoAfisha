@@ -3,13 +3,14 @@ package ru.netology.manager;
 import lombok.NoArgsConstructor;
 import ru.netology.domain.Movie;
 
+
 @NoArgsConstructor
 
-public class Manager {
+public class AfishaManager {
     private Movie[] movies = new Movie[0];
     private int moviesToReturn = 10;
 
-    public Manager(int moviesToReturn) {
+    public AfishaManager(int moviesToReturn) {
         this.moviesToReturn = moviesToReturn;
     }
 
