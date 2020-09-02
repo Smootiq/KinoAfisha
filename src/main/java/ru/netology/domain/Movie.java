@@ -1,34 +1,34 @@
 package ru.netology.manager;
 
 import lombok.NoArgsConstructor;
-import ru.netology.repository.AfishaRepository;
+import ru.netology.repository.Manager;
 
 @NoArgsConstructor
 
-public class AfishaManager {
-    private AfishaRepository[] afishaRepositories = new AfishaRepository[0];
+public class Movie {
+    private Manager[] afishaRepositories = new Manager[0];
     private int moviesToReturn = 10;
 
-    public AfishaManager(int moviesToReturn) {
+    public Movie(int moviesToReturn) {
         this.moviesToReturn = moviesToReturn;
     }
 
-    public void add(AfishaRepository afishaRepository) {
-        AfishaRepository[] tmp = new AfishaRepository[afishaRepositories.length + 1];
+    public void add(Manager manager) {
+        Manager[] tmp = new Manager[afishaRepositories.length + 1];
 
         System.arraycopy( afishaRepositories, 0, tmp, 0, afishaRepositories.length);
 
-        tmp[tmp.length - 1] = afishaRepository;
+        tmp[tmp.length - 1] = manager;
 
         afishaRepositories = tmp;
     }
 
-    public AfishaRepository[] getMovie() {
+    public Manager[] getMovie() {
         int arrayLength = moviesToReturn;
         if (afishaRepositories.length < arrayLength) {
             arrayLength = afishaRepositories.length;
         }
-        AfishaRepository[] result = new AfishaRepository[arrayLength];
+        Manager[] result = new Manager[arrayLength];
 
         for (int i = 0; i < arrayLength; i++) {
             int index = afishaRepositories.length - i - 1;

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class AfishaRepository {
+public class Manager {
     private int id;
     private String name;
     private String genre;
