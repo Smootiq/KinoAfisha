@@ -1,40 +1,36 @@
 package ru.netology.manager;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.netology.domain.Movie;
 
-
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class AfishaManager {
-    private Movie[] movies = new Movie[0];
-    private int moviesToReturn = 10;
-
-    public AfishaManager(int moviesToReturn) {
-        this.moviesToReturn = moviesToReturn;
+    private AfishaRepository repository = new AfishaRepository();
+    private int quantityOfFilms = 3;
+    public AfishaManager(AfishaRepository repository) {
+        this.repository = repository;
     }
-
-    public void add(Movie movie) {
-        Movie[] tmp = new Movie[movies.length + 1];
-
-        System.arraycopy(movies, 0, tmp, 0, movies.length);
-
-        tmp[tmp.length - 1] = movie;
-
-        movies = tmp;
+    public void addFilm(Movie movie) {
+        repository.save(movie);
     }
-
-    public Movie[] getMovie() {
-        int arrayLength = moviesToReturn;
-        if (movies.length < arrayLength) {
-            arrayLength = movies.length;
+    public Movie[] showFilms(){
+        int c = 0;
+        Movie[] listNew = new Movie[quantityOfFilms];
+        Movie[] all = repository.findAll();
+        for (int i = all.length - 1; i > all.length - (quantityOfFilms + 1) & i >= 0; i--) {
+            listNew[c] = all[i];
+            System.out.print(all[i]);
+            c++;
         }
-        Movie[] result = new Movie[arrayLength];
-
-        for (int i = 0; i < arrayLength; i++) {
-            int index = movies.length - i - 1;
-            result[i] = movies[index];
-        }
-        return result;
+        return listNew;
+    }
+    public Movie[] showAll() {
+        Movie[] all = repository.findAll();
+        return all;
     }
 }
